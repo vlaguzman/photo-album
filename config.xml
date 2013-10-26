@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "me.photoalbu.phonegap"
+        id        = "co.photoalbu.phonegap"
         versionCode="10" 
         version   = "1.0.0">
 
     <!-- versionCode is optional and Android only -->
 
-    <name>SaleCode</name>
+    <name>Photo Album</name>
 
     <description>
         Consulta información de una manera fácil y efectiva. 
-        Los avisos de inmuebles y automóviles en venta ahora te dan toda la información que necesitas.
     </description>
     <preference name="fullscreen" value="false" />
     <author href="https://www.vlaguzman.com" email="guzman.vla@gmail.com">
