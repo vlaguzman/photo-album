@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Simple Map</title>
+    <title>album</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
@@ -12,23 +12,15 @@
       }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <script>
-var map;
-function initialize() {
-  var mapOptions = {
-    zoom: 8,
-    center: new google.maps.LatLng(-34.397, 150.644),
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-  map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
-}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+     <script type="text/javascript" src="http://static.stackmob.com/js/stackmob-js-0.9.2-bundled-min.js"></script>
+	 <script type="text/javascript" src="file:///e:/RETO/photo-album/www/scripts/lib/stackmob/stackmob.js"></script>
 
-     google.maps.event.addDomListener(window, 'load', initialize); 
 
-    </script>
   </head>
   <body>
     <div id="map-canvas"></div>
+    <script type="text/javascript" src="file:///e:/RETO/photo-album/www/scripts/app/map.js"></script>
   </body>
 </html>
 
