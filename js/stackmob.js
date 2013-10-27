@@ -54,6 +54,9 @@ function createRegistry(data){
       // console.debug(model.toJSON()); 
       //document.getElementById("statusSave").innerHTML = "OK"; 
       $('#form-album .ui-btn-text').trigger('click');
+      $('#name').val('');
+      $('#description').val('');
+      $('#file').val('');
     },
     error: function(model, error, options) {
       console.debug("Error", error.error); 
@@ -169,11 +172,33 @@ function createUser(){
    
   var c = new Customer({
     email: $('#form-registro #email').val(),
-    passwordField: $('#form-registro #p1').val()
+    passwordField: $('#form-registro #p1').val(),
+    username: $('#form-registro #username').val()
   });
-  c.create(); //saves to "customer"
+  c.create({
+    success: function(){
+      $('#registro .ui-btn-text').trigger('click');
+      $('#email').val('');
+      $('#username').val('');
+      $('#p1').val('');
+      $('#p2').val('');
+    }
+  }); //saves to "customer"
 
 }
+
+function loginUser(){
+  var user = new StackMob.User({ username: $('#formulario-login #nombredeusuario').val(), password: $('#formulario-login #clave').val() });
+  user.login(false, {
+    success: function(model, result, options) {
+      console.log("QAP");
+    },
+    error: function(model, result, options) {
+      console.error("error", model, result, options); //or print out the error
+    }
+  });
+}
+
 
 var cityReport = "";
 var countryReport = "";
@@ -370,40 +395,29 @@ var reader = new FileReader();
    reader.readAsDataURL(file);
 }
 
-function loginUser(){
-  var user = new StackMob.User({ email: $('#formulario-login #nombredeusuario').val(), passwordField: $('#formulario-login #clave').val() });
-  user.login(false, {
-    success: function(model, result, options) {
-      console.log("QAP");
-    },
-    error: function(model, result, options) {
-      console.error("error", model, result, options); //or print out the error
-    }
-  });
-}
+
 
 function getAlbums(){
       json = albums(function(data){
-        console.log("getAlbums -----------", data);
         console.debug(data);
       $('.albums-list li').remove();
       for (var i = 0; i < data.models.length; i++){
           var albumIdfn = data.models[i].get('album_id');
           var cantSticker = albumIdfn + '-' + data.models[i].get('cantStickers');
           console.log('cantSticker', cantSticker);
-        var li_html = '<li><a href="#album-sticker" data-id="123" onClick="saveAlbumId('+albumIdfn+')">';
-        li_html += '<img src='+data.models[i].get('photo')+'>';
-        li_html += '<h2>'+data.models[i].get('name')+'</h2>';
-        li_html += '<p>'+data.models[i].get('description')+'</p>';
-        if (data.models[i].get('limit') == true) {
-          li_html += '<span class="ui-li-count">'+data.models[i].get('cantStickers')+'</span>';
-        }
-        else{
-          li_html += '<span class="ui-li-count">Ilimitadas</span>'; 
-        };
-        li_html += '</li>';
-        li_html += '</ul>';
-        $('.albums-list').append(li_html);
+          var li_html = '<li><a href="#album-sticker" data-id="123" onClick="saveAlbumId('+albumIdfn+')">';
+          li_html += '<img src='+data.models[i].get('photo')+'>';
+          li_html += '<h2>'+data.models[i].get('name')+'</h2>';
+          li_html += '<p>'+data.models[i].get('description')+'</p>';
+          if (data.models[i].get('limit') == true) {
+            li_html += '<span class="ui-li-count">'+data.models[i].get('cantStickers')+'</span>';
+          }
+         else{
+            li_html += '<span class="ui-li-count">Ilimitadas</span>'; 
+          };
+          li_html += '</li>';
+          li_html += '</ul>';
+          $('.albums-list').append(li_html);
       }
       setTimeout("updteList()",100);
     });
