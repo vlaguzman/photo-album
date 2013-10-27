@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>PhotoAlbums</title>
+    <meta name="description" content="">
+    <meta name="author" content="Henry Corredor Gómez (@hencogo)">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="cleartype" content="on">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="package/lungo/lungo.css">
+    <link rel="stylesheet" href="package/lungo/lungo.theme.css">
+    <link rel="stylesheet" href="package/lungo.icon/lungo.icon.css">
+</head>
+<body>
+    <!-- ASIDE -->
+    <aside id="options">
+        <header data-title="Opciones"></header>
+        <nav>
+            <ul>
+                <li>
+                    <strong>Primera opción</strong>
+                    <small>Info primera opción</small>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <strong>Segunda opción</strong>
+                    <small>Info segunda opción</small>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- LOGIN -->
+    <section id="splash" data-transition="slide">
+        <article id="form-login" class="indented scroll">
+            <div class="form empty">
+                <span class="icon group"><br/></span>
+                <!-- <img src="img/logo2in.png" width="130px" class="logo"/><br/><br/> -->
+                <fieldset class="radius-top" data-icon="user">
+                    <input type="text" placeholder="Usuario" id="txt-signup-name">
+                </fieldset>
+                <fieldset class="radius-bottom shadow" data-icon="lock">
+                    <input type="password" placeholder="Contraseña" id="txt-signup-password">
+                </fieldset>
+                <br/>
+    
+                <!-- <div id="fb-root"></div>
+                <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button> -->
+    
+                <a href="#main" id="enter" data-view-section="main" class="button anchor" data-icon="signin" data-label="Ingresar"></a>
+    
+                <!-- <a href="#" id="enter" class="button anchor" data-icon="signin" data-label="Ingresar"></a> -->
+    
+                <a href="#" data-view-article="infoPosition" data-async="infoPosition.html" class="button anchor" data-icon="user" data-label="Ingresar con Facebook" onclick=""></a>
+                <a href="#register" data-view-section="register" class="button anchor" data-icon="user" data-label="¡Regístrate Ahora!"></a><br/><br/>
+                <footer> Copyright © 2013 - Derechos Reservados</footer>
+            </div>
+        </article>
+    </section>
+
+    <!-- REPORTE -->
+    <section id="main" data-transition="slide">
+        <header data-title="Reporte">
+            <!-- <nav class="right box">
+                <a href="#" data-view-section="splash" data-label="Salir" data-icon="signout"></a
+                >
+            </nav> -->
+            <nav class="left box">
+                <a href="#options" data-view-aside="options" data-icon="menu"></a>
+            </nav>
+        </header>
+        <footer>
+            <nav>
+                <a href="#main-article" class="current" data-target="article" data-icon="home"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+            </nav>
+        </footer>
+        <article id="main-article" class="list indenteds scroll">
+            <div class="form empty">
+
+                <!-- <span class="icon list-alt"></span> -->
+                <fieldset class="radius-top" data-icon="truck">
+                    <!-- <input type="text" id="ILicensePlate" name="LicensePlate" placeholder="Ingrese la placa" requiered> -->
+                </fieldset>
+                <fieldset class="radius-top" data-icon="pushpin">
+                     <!-- <input type="text" id="IAddress" name="Address" placeholder="Dirección"> -->
+                </fieldset>
+                <!-- <fieldset class="radius-top" data-icon="map-marker">
+                    <input type="text" id="ICity" name="City" placeholder="Ciudad">
+                </fieldset>
+                <fieldset class="radius-top" data-icon="globe">
+                    <input type="text" id="ICountry" name="Country" placeholder="País">
+                </fieldset> -->
+                <fieldset class="radius-top" data-icon="picture">
+                    <input type="file" name="filesToUpload[]" id="filesToUpload" accept="image/*; capture=camera"/>
+                </fieldset>
+                
+                <output id="filesInfo"></output>
+                <output id="statusSave"></output>
+
+                <a href="#" id="sendReportNow" class="button anchor" data-icon="eye-open" data-label="Crear Datos"></a>
+                <a href="#" id="consultReport" class="button anchor" data-icon="eye-open" data-label="Consultar Datos"></a>
+                <!-- <a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fdrive2in.com%2F&text=@drive_2in Acabo de cooperar en la protección y preservación de la vida en las vías, ¿y tú? #Social2in" class="button theme anchor" data-label="Tweet me" data-icon="twitter"></a> -->
+            </div>
+            <div id="map" class="form empty" style="width: 80%; height: 40%;"></div>
+                <!-- <a href="http://lungo.tapquo.com" target="_blank" class="button margin-top secondary" data-label="Go to Project's page"></a> -->
+            <!-- </div> -->
+                        
+        </article>
+    </section>
+
+    <!-- REGISTRO -->
+    <section id="register" data-transition="slide">
+        <header data-title="Regístrate" data-back="chevron-left">
+        </header>
+        <!-- <nav data-control="groupbar">
+            <a href="#" data-view-article="layout-art1" data-label="Profile" class="active"></a>
+            <a href="#" data-view-article="layout-art2" data-label="Inbox" data-count="19"></a>
+            <a href="#" data-view-article="layout-art3" data-label="Map"></a>
+            <a href="#" data-view-article="layout-art4" data-label="Settings"></a>
+        </nav> -->
+        <article id="form-register">
+            <div class="form empty" align="center">
+                <span class="icon user"></span>
+                <fieldset class="radius-top" data-icon="user">
+                    <input type="text" placeholder="Usuario" id="txt-user">
+                </fieldset>
+                <fieldset class="radius-bottom shadow" data-icon="lock">
+                    <input type="password" placeholder="Contraseña" id="txt-password">
+                </fieldset>
+                <fieldset class="radius-bottom shadow" data-icon="lock">
+                    <input type="password" placeholder="Confirmar Contraseña" id="txt-confirm">
+                </fieldset>
+                <fieldset class="radius-top" data-icon="envelope">
+                    <input type="text" placeholder="Correo Electrónico" id="txt-email">
+                </fieldset>
+                <a href="#" id="registerUser" class="button anchor" data-icon="lock" data-label="¡Regístrate!"></a>
+                <footer> Copyright &copy; 2013 - Derechos Reservados</footer>
+            </div>
+        </article>
+        <!-- <footer>
+            <nav>
+                <a href="#" data-view-article="layout-art1" data-icon="user" class="active"></a>
+                <a href="#" data-view-article="layout-art2" data-icon="inbox" data-count="80"></a>
+                <a href="#" data-view-article="layout-art3" data-icon="comments"></a>
+                <a href="#" data-view-article="layout-art4" data-icon="cog"></a>
+            </nav>
+        </footer> -->
+    </section>
+    <!-- LISTA DE FOTOS -->
+    <section id="scrollPhotos" class="scroll horizontal" data-transition="slide">
+        <!-- <header data-back="chevron-left" data-title="Scrolls"></header> -->
+        <article class="active">
+            <h1>Placa reportada: </h1>
+            <ul id="plist" class="horizontal scroll" style="height: 164px;">
+            <!-- <img src="http://lorempixel.com/320/164/food/"></img>
+            <img src="http://lorempixel.com/320/164/sports/"></img>
+            <img src="http://lorempixel.com/320/164/people/"></img>
+            <img src="http://lorempixel.com/320/164/technics/"></img>
+            <img src="http://lorempixel.com/320/164/animals/"></img>
+            <img src="http://lorempixel.com/320/164/nightlife/"></img>
+            <img src="http://lorempixel.com/320/164/nature/"></img>
+            <img src="http://lorempixel.com/320/164/transport/"></img>
+            <img src="http://lorempixel.com/320/164/city/"></img>
+            <img src="http://lorempixel.com/320/164/fashion/"></img<img src="http://lorempixel.com/320/164/abstract/"></img> -->
+
+            </ul>
+        </article>
+    </section>
+    
+    <!-- Lungo dependencies -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://static.stackmob.com/js/stackmob-js-0.9.2-bundled-min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+    <script src="components/quojs/quo.js"></script>
+    <script src="package/lungo/lungo.js"></script>
+    <!-- // <script src="static/javascripts/drive2in.js"></script> -->
+    <script src="stackmob.js"></script>
+    <!-- <script src="//connect.facebook.net/en_US/all.js"></script> -->
+
+    <!-- LungoJS - Sandbox App -->
+    <script>
+        Lungo.init({
+            name: 'Social2In',
+            version: '1.0 Beta',
+            resources:[]
+            // history: false
+        });
+    </script>
+</body>
+</html> 
