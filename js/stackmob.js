@@ -33,6 +33,7 @@ function consultReport(){
 //Create new instance of uInfo
 function createRegistry(data){
   // Create new instance of Todo
+
   var instance = new Report({
     name: data.name,
     description: data.description,
@@ -56,16 +57,27 @@ function createRegistry(data){
 
 $(document).ready(
   function (event, ui ){
-    console.log('entraaaaaaaaaaa');
+    
+    $('#limit').change(function(){
+      console.log('cambia')
+    })
+
     $("#btn-send-album").click(function(event){
       event.preventDefault();
       console.log('entra');
+      var limit = $('#limit').val()
+        if (limit === "true") {
+          limit = true;
+        }
+        else{
+          limit = false; 
+        };
         var data = {
           name: $('#name').val(),
           description: $('#description').val(),
           photo: $('#file').val(),
-          limit: $('#limit').val(),
-          cantStickers: $('#cant-stickers').val()
+          limit: limit,
+          cantStickers: parseInt($('#cant-stickers').val())
         }
         console.log('data', data);
         createRegistry(data);
