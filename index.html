@@ -23,8 +23,9 @@
 	<div data-role="page" data-theme="c" id="home">
 		<div data-role="header" >
 			<a data-icon="refresh" data-theme="c" href="#page-albums">Login</a>
+			<a data-icon="refresh" data-theme="c" href="#login">Login</a>
 			<h1>Page Title</h1>
-			<a data-icon="refresh" data-theme="c" class="ui-btn-right">Registro</a>
+			<a data-icon="refresh" href="#registro" data-theme="c" class="ui-btn-right">Registro</a>
 		</div>
 		<!--
 		<div class="principal-content" data-role="content" data-theme="b">
@@ -58,6 +59,59 @@
 
 			</ul>
 		</div>	
+	</div>
+
+
+	<div data-role="page" data-theme="a" id="registro" data-add-back-btn="true">
+		<div data-role="header">
+			<h1>Registro</h1>
+		</div>
+		<div data-role="content" data-theme="b">
+			<form id="form-registro">
+				
+				<label for="email">Email</label>
+				<input type="email" id="email" name="email" required>
+				
+                <label for="password">Password</label><input type='password' id='p1' required>
+                <label for="password">Confirm Password</label><input type='password' onfocus="validatePass(document.getElementById('p1'), this);" oninput="validatePass(document.getElementById('p1'), this);" required>
+            
+
+				<input type="submit" value="enviar" id="botonRegistro"/>
+			</form>
+
+		</div>	
+		<div data-role="footer" class="ui-bar">
+			<h4>Photo Album</h4>		
+		</div>
+
+	</div>
+
+	<div data-role="page" data-theme="a" id="login" data-add-back-btn="true">
+		<div data-role="header">
+			<h1>Ingresa tus datos</h1>
+		</div>
+		<div data-role="content" data-theme="c">
+			
+			<!--<img src="img/copy.png">
+
+			<div id="loader-home"><img src="img/loader.gif" /></div>
+			<img src="img/logo.png">
+			<div id="msj-error">
+			</div>
+			-->
+			
+			<form id="formulario-login" >
+      			<input data-theme="c" type="email" id="nombredeusuario" name="nombredeusuario" placeholder="Email" required>
+     			<input data-theme="c" type="password" id="clave" name="clave" placeholder="Contraseña" >
+      			<input data-theme="c" type="submit" value="Iniciar Sesión" id="botonLogin">
+    		</form>	
+	
+	 		
+		</div>	
+
+		<div data-role="footer" class="ui-bar" data-position="fixed" data-id="footer1">
+			
+		</div>
 	</div>
 
 	<div data-role="page" data-theme="c" id="form-album" data-add-back-btn="true">

@@ -126,8 +126,9 @@ $(document).ready(
 
     getAlbums();
 
+<<<<<<< HEAD
 }); 
-
+=======
 function createUser(){
 
     var User = StackMob.User.extend({
@@ -155,6 +156,7 @@ function loginUser(){
     }
   });
 }
+>>>>>>> 92efd233fb0fde2d982e603519b569a54c5cb95a
 
 function getAlbums(){
       json = albums(function(data){
