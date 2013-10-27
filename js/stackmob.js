@@ -99,8 +99,8 @@ $(document).ready(
     }); 
    
     getAlbums();
-}); 
 
+}); 
 
 function getAlbums(){
       json = albums(function(data){
@@ -108,7 +108,10 @@ function getAlbums(){
         console.debug(data);
       $('.albums-list li').remove();
       for (var i = 0; i < data.models.length; i++){
-        var li_html = '<li><a href="#album-sticker" onClick="saveAlbumId('+data.models[i].get('album_id')+', '+data.models[i].get('cantStickers')+')">';
+          var albumIdfn = data.models[i].get('album_id');
+          var cantSticker = albumIdfn + '-' + data.models[i].get('cantStickers');
+          console.log('cantSticker', cantSticker);
+        var li_html = '<li><a href="#album-sticker" data-id="123" onClick="saveAlbumId('+albumIdfn+')">';
         li_html += '<img src='+data.models[i].get('photo')+'>';
         li_html += '<h2>'+data.models[i].get('name')+'</h2>';
         li_html += '<p>'+data.models[i].get('description')+'</p>';
@@ -129,9 +132,9 @@ function getAlbums(){
 function updteList(){
   $(".albums-list").listview('refresh');
 }
-function saveAlbumId(id, cant){
+function saveAlbumId(id){
+    console.log('entraaaaaaa')
     albumId = id;
-    cantPintar = cant;
 }
 
 var Sticker = StackMob.Model.extend({
@@ -144,6 +147,7 @@ var CollectStickers = StackMob.Collection.extend({
 function getStickers(){
     var stickers = new CollectStickers();
     console.log('pintar', cantPintar);
+    console.log('pintar', albumId);
 
     stickers.fetch({
 	  success: function(result) { //StackMob.Collection is returned
