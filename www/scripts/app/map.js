@@ -49,15 +49,24 @@ page_.views.Map = function () {
 
 				google.maps.event.addDomListener(window, 'load', this); 
 
-				json = fr();
+				json = fr(function(data){
+					console.debug("map.js");
+					console.debug(data);
+					console.debug('models',data.models);
+					for (var i = 0; i <= data.models.length; i++){
+						console.debug(data.models[i].get('address'));
+					}
 
-				console.log(json);
+				});
 
+				
+
+
+
+				//setTimeout("test()",5000);
+				
 				//console.log(json.serializeArray());
 
-			$.each(json.models, function(index,value){
-                    alert( index + ": " + value );
-			});
 	
 				  
 	    	//}//inicialize
@@ -86,7 +95,7 @@ console.log(locations);
   // increase in the X direction to the right and in
   // the Y direction down.
 		  var image = {
-			 url: 'file:///e:/RETO/photo-album/www/img/icon_map/comida.png'//,
+			 url: 'img/icon_map/comida.png'//,
 			
 		  };
   // Shapes define the clickable region of the icon.
@@ -119,3 +128,9 @@ console.log(locations);
 	 
 
 };//fin page view
+
+
+
+function test(){
+	console.log(json);
+}

@@ -17,17 +17,20 @@ var CollectReport = StackMob.Collection.extend({
   model: Report
 });
 
-var fr = function consultReport(){
+var fr = function consultReport(callback){
 	var results = new CollectReport();
 	results.fetch({
 	  success: function(model, result, options) { //StackMob.Collection is returned
 	    console.debug(model.toJSON());
+      console.debug("StackMob");
+      console.debug(result);
+      callback(results);
 	  },
 	  error: function(model, error, options) {
 	      console.debug(error.error); 
 	      document.getElementById("statusSave").innerHTML = error.error; }
 	});
-	return results;
+	
 }
 
 
