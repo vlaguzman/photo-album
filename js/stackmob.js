@@ -1,4 +1,3 @@
-//Call init to initialize the StackMob library. This is required before you use StackMob's JS SDK further
 var albumId;
 var cantPintar;
 var initialLatitude;
@@ -78,7 +77,7 @@ function createSticker(){
     error: true,
     lat: initialLatitude.toString(),
     lng: initialLongitude.toString(),
-    photo: photoDirectory+fullDateTime.toString()+".jpg",
+    photo: photoDirectory+fullDateTime.toString()+".jpg"
   });
    
   // Persist the object to StackMob
@@ -124,7 +123,7 @@ $(document).ready(
   $("#btn-send-album").click(function(event){
       event.preventDefault();
       console.log('entra');
-      var limit = $('#limit').val()
+      var limit = $('#limit').val();
         if (limit === "true") {
           limit = true;
         }
@@ -160,18 +159,19 @@ $(document).ready(
 
 function createUser(){
 
-    var User = StackMob.User.extend({
-      schemaName: 'user',
-      loginField: 'email',
-      passwordField: 'password'
-    });
-     
-    var c = new User({
-      email: $('#form-registro #nombredeusuario').val(),
-      password: $('#form-registro #clave').val(),
-      passwordField: $('#form-registro #clave').val()
-    });
-  c.create();
+
+  var Customer = StackMob.User.extend({
+    schemaName: 'user',
+    loginField: 'email',
+    passwordField: 'password'
+  });
+   
+  var c = new Customer({
+    email: $('#form-registro #email').val(),
+    passwordField: $('#form-registro #p1').val()
+  });
+  c.create(); //saves to "customer"
+
 }
 
 var cityReport = "";
@@ -370,7 +370,7 @@ var reader = new FileReader();
 }
 
 function loginUser(){
-  var user = new StackMob.User({ email: $('#formulario-login #email').val(), passwordField: $('#formulario-login #password').val() });
+  var user = new StackMob.User({ email: $('#formulario-login #nombredeusuario').val(), passwordField: $('#formulario-login #clave').val() });
   user.login(false, {
     success: function(model, result, options) {
       console.log("QAP");
@@ -413,7 +413,7 @@ function updteList(){
 }
 
 function saveAlbumId(id){
-    console.log('entraaaaaaa')
+    console.log('entraaaaaaa');
     albumId = id;
 }
 
@@ -435,7 +435,7 @@ function getStickers(){
 	    console.log(result);
         var cantStickers = _.filter(result.models, function(stick){
             /*console.log('stick', stick);*/
-            return stick.get('album_id') == '123456'
+            return stick.get('album_id') == '123456';
         })
         console.log('cant stickers', cantStickers);
 	  },
@@ -452,6 +452,5 @@ $( "#album-sticker" ).on( "pageshow", function( event, ui ) {
 })
 $( "#page-albums" ).on( "pageshow", function( event, ui ) {
   getAlbums();
-  return false;
 })
 
