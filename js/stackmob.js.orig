@@ -24,7 +24,7 @@ var albums = function consultReport(callback){
 	results.fetch({
 	  success: function(result) { //StackMob.Collection is returned
 	    console.debug(result.toJSON());
-      callback(result);
+        callback(result);
 	  },
 	  error: function(model, error, options) {
 	      console.debug("Error", error.error); 
@@ -95,14 +95,6 @@ function createSticker(){
   });
 }
 
-<<<<<<< HEAD
-/*Lungo.Events.init({*/
- /*'tap section#splash article div a#enter': function(){
-    // FALTA VALIDAR EL USUARIO CONTRA LA BD
-    // getLocation();
- },*/
-=======
->>>>>>> c0726e051399abaa3e074c018ae92b4e84f78547
 function validatePass(p1, p2) {
   if (p1.value != p2.value) {
     p2.setCustomValidity('Las dos contraseñas deben ser iguales.');
@@ -178,7 +170,6 @@ function createUser(){
       email: $('#form-registro #nombredeusuario').val(),
       password: $('#form-registro #clave').val()
     });
-<<<<<<< HEAD
   c.create();
 
 
@@ -217,9 +208,6 @@ function createUser(){
     // }
     /*},*/
   /*});*/
-=======
-}
->>>>>>> c0726e051399abaa3e074c018ae92b4e84f78547
 
 
 var cityReport = "";
@@ -417,11 +405,6 @@ var reader = new FileReader();
    reader.readAsDataURL(file);
 }
 
-<<<<<<< HEAD
-/*}*/
-
-=======
->>>>>>> c0726e051399abaa3e074c018ae92b4e84f78547
 function loginUser(){
   var user = new StackMob.User({ email: $('#formulario-login #email').val(), password: $('#formulario-login #password').val() });
   user.login(false, {

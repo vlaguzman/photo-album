@@ -54,6 +54,9 @@ function createRegistry(data){
       // console.debug(model.toJSON()); 
       //document.getElementById("statusSave").innerHTML = "OK"; 
       $('#form-album .ui-btn-text').trigger('click');
+      $('#name').val('');
+      $('#description').val('');
+      $('#file').val('');
     },
     error: function(model, error, options) {
       console.debug("Error", error.error); 
@@ -172,7 +175,15 @@ function createUser(){
     passwordField: $('#form-registro #p1').val(),
     username: $('#form-registro #username').val()
   });
-  c.create(); //saves to "customer"
+  c.create({
+    success: function(){
+      $('#registro .ui-btn-text').trigger('click');
+      $('#email').val('');
+      $('#username').val('');
+      $('#p1').val('');
+      $('#p2').val('');
+    }
+  }); //saves to "customer"
 
 }
 
