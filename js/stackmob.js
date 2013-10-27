@@ -59,7 +59,15 @@ $(document).ready(
   function (event, ui ){
     
     $('#limit').change(function(){
-      console.log('cambia')
+        var activeLimit = $(this).val();
+        if( activeLimit === 'true' ){
+            console.log('true')
+            $( 'input[name="number"]' ).removeClass('mobile-textinput-disabled').removeClass('ui-state-disabled').removeAttr('disabled').parent().removeClass('ui-disabled');
+        }else{
+            console.log('false')
+            $( 'input[name="number"]' ).addClass('mobile-textinput-disabled').addClass('ui-state-disabled').attr('disabled', 'disabled').parent().addClass('ui-disabled');
+            
+        }
     })
 
     $("#btn-send-album").click(function(event){
