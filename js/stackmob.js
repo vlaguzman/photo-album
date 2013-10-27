@@ -33,6 +33,10 @@ var albums = function consultReport(callback){
 }
 
 
+
+
+
+
 //The above schemaName: 'userinfo' tells StackMob to save 'userInfo' data under a schema named 'userinfo' on the server side.
 //Create an Object - Save an instance of your 'userinfo' object to the server.
 //Create new instance of uInfo
@@ -108,9 +112,48 @@ $(document).ready(
         createRegistry(data);
     }); 
    
+
+  $("#botonRegistro").click(function(event){
+      event.preventDefault();
+      createUser();
+    }); 
+
+
+  $("#botonLogin").click(function(event){
+      event.preventDefault();
+      loginUser();
+    }); 
+
     getAlbums();
 }); 
 
+function createUser(){
+
+    var User = StackMob.User.extend({
+      schemaName: 'user',
+      loginField: 'username',
+      password: 'password'
+    });
+     
+    var c = new User({
+      email: $('#form-registro #nombredeusuario').val(),
+      password: $('#form-registro #clave').val()
+    });
+  c.create();
+
+  }
+
+function loginUser(){
+  var user = new StackMob.User({ username: $('#formulario-login #email').val(), password: $('#formulario-login #password').val() });
+  user.login(false, {
+    success: function(model, result, options) {
+      console.log("QAP");
+    },
+    error: function(model, result, options) {
+      console.error(result); //or print out the error
+    }
+  });
+}
 
 function getAlbums(){
       json = albums(function(data){
