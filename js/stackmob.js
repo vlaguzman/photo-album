@@ -31,11 +31,14 @@ function consultReport(){
 //The above schemaName: 'userinfo' tells StackMob to save 'userInfo' data under a schema named 'userinfo' on the server side.
 //Create an Object - Save an instance of your 'userinfo' object to the server.
 //Create new instance of uInfo
-function createRegistry(){
+function createRegistry(data){
   // Create new instance of Todo
   var instance = new Report({
-    name: "nombre",
-    description: "descripcion",
+    name: data.name,
+    description: data.description,
+    photo: data.photo,
+    limit: data.limit,
+    cantStickers: data.cantStickers,
     done: true
   });
    
@@ -50,54 +53,24 @@ function createRegistry(){
   });
 }
 
-Lungo.Events.init({
- /*'tap section#splash article div a#enter': function(){
-    // FALTA VALIDAR EL USUARIO CONTRA LA BD
-    // getLocation();
- },*/
 
- 'tap section#main article div a#sendReportNow': function(){
-    // var license = false;
-    // var address = false;
-    // var photo = false;
-
-    // photo = validateData(document.getElementById('filesToUpload').value, "Foto", "picture");
-    // address = validateData(document.getElementById('IAddress').value, "Dirección", "pushpin");
-    // license = validateData(document.getElementById('ILicensePlate').value, "Placa", "truck");
+$(document).ready(
+  function (event, ui ){
+    console.log('entraaaaaaaaaaa');
+    $("#btn-send-album").click(function(event){
+      event.preventDefault();
+      console.log('entra');
+        var data = {
+          name: $('#name').val(),
+          description: $('#description').val(),
+          photo: $('#file').val(),
+          limit: $('#limit').val(),
+          cantStickers: $('#cant-stickers').val()
+        }
+        console.log('data', data);
+        createRegistry(data);
+    });
     
-    createRegistry();
-    
-
-    // if(license && address && photo) {
-    //   createReport();
-    //   //VERIFICAR NOTIFICACIÓN PARA SEGURARSE DE LA CREACIÓN CORRECTA DEL REPORTE (LADO SERVIDOR)
-    //   Lungo.Notification.success("Gracias", "¡Reporte enviado!", "trophy", 3);
-    //   // clearData();
-    //   showPhotos();
-    // }
-  },
-
-  'tap section#main article div a#consultReport': function(){
-    // var license = false;
-    // var address = false;
-    // var photo = false;
-
-    // photo = validateData(document.getElementById('filesToUpload').value, "Foto", "picture");
-    // address = validateData(document.getElementById('IAddress').value, "Dirección", "pushpin");
-    // license = validateData(document.getElementById('ILicensePlate').value, "Placa", "truck");
-    
-    consultReport();
-    
-
-    // if(license && address && photo) {
-    //   createReport();
-    //   //VERIFICAR NOTIFICACIÓN PARA SEGURARSE DE LA CREACIÓN CORRECTA DEL REPORTE (LADO SERVIDOR)
-    //   Lungo.Notification.success("Gracias", "¡Reporte enviado!", "trophy", 3);
-    //   // clearData();
-    //   showPhotos();
-    // }
-  },
-});
-
-
+  }
+);
 
