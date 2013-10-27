@@ -101,10 +101,3 @@ Lungo.Events.init({
 
 
 
-$(document).ready(function(){
-    
-  $("#btn-create-alb").click(function(){
-    
-  });
-
-})

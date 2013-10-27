@@ -3,17 +3,14 @@
 <html>
 <head>
 <meta charset="UTF-8">	
-<title>PhotoAlbum</title>
+<title>SaleCode</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-<link rel="stylesheet" href="css/lungo.css">
-<link rel="stylesheet" href="css/lungo.icon.css">
-<link rel="stylesheet" href="css/lungo.theme.css">
+<link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />
 <link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 
-
-</script>
 <!--
 <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.1.css">
 <script type="text/javascript" src="js/jquery.js"></script>
@@ -21,111 +18,80 @@
 <script type="text/javascript" src="js/jquery.mobile-1.3.1.js"></script>
 -->
 </head>
+
+
 <body>
-	<section id="main">
-        <header data-title="titulo">
-            <nav>
-                <a href="#main-logged" data-view-section="main-logged" class="button">Login</a>
-                <a href="#" class="button on-right">Register</a>
-            </nav>
-        </header>
-        <article class="list scroll">
-            <ul>
-                <li class="thumb big">
-                    <img src="img/icon-144.png" alt="bla" />
-                    <div>
-                        <strong>album1</strong>
-                        <span class="text tiny opacity">desc del album1</span>
-                    </div>
-                </li>
-            </ul>
-        </article>
+	<div data-role="page" data-theme="c" id="home">
+		<div data-role="header" >
+			<a data-icon="refresh" data-theme="c" href="#page-albums">Login</a>
+			<h1>Page Title</h1>
+			<a data-icon="refresh" data-theme="c" class="ui-btn-right">Registro</a>
+		</div>
+		<!--
+		<div class="principal-content" data-role="content" data-theme="b">
+			
+			<div id="loader-home"><img src="img/loader.gif" /></div>
+			<div id="error-wrap">
+			
+		</div>
+			-->
+		<div data-role="content">
+			<div id="albums-grid" class="ui-grid-b">
+			    <div class="ui-block-a"><div class="ui-bar ui-bar-e" style="height:60px">A</div></div>
+			    <div class="ui-block-b"><div class="ui-bar ui-bar-e" style="height:60px">B</div></div>
+			    <div class="ui-block-c"><div class="ui-bar ui-bar-e" style="height:60px">C</div></div>
+			</div>
+		</div>	
 
-	</section>
+		<div data-role="footer" class="ui-bar" data-position="fixed" data-id="footer1">
+			<div data-role="navbar">
 
-	 <!-- Home when the user is logged in -->
-	<section id="main-logged">
-        <header data-title="titulo">
-            <nav>
-                <a href="#main-photos" data-view-section="main-photos" class="button">Login</a>
-                <a href="#form-create" data-view-section="form-create" class="button on-right">Crear album</a>
-            </nav>
-        </header>
-        <article class="list scroll">
-            <ul>
-                <li class="thumb big">
-                    <img src="img/icon-144.png" alt="bla" />
-                    <div>
-                        <strong>album1</strong>
-                        <span class="text tiny opacity">desc del album1</span>
-                    </div>
-                </li>
-            </ul>
-        </article>
+			</div>
+		</div>
+	</div>
 
-	</section>
+	<div data-role="page" data-theme="c" id="page-albums" data-add-back-btn="true">
+		<div data-role="header" >
+			<h1>Page Title</h1>
+			<a href="#form-album" data-icon="refresh" data-theme="c" class="ui-btn-right">Crear Album</a>
+		</div>
 
-	<!-- Create an album id="btn-create-alb" -->
-	<section id="form-create">
-        <header data-title="titulo">
-            <nav>
-                <a href="#main-photos" data-view-section="main-photos" class="button">Login</a>
-                <a href="#" id="btn-create-alb" class="button on-right">Crear album</a>
-            </nav>
-        </header>
-
-		<article id="form-normal" class="scroll active">
-		        <div class="form">
-		            <!-- LABEL + INPUT -->
-		            <fieldset>
-		                <input id="album-name" type="text" placeholder="Nombre del album">
-		            <fieldset>
-		                <textarea id="album-description" placeholder="Descripcion"></textarea>
-		            </fieldset>
-		            <fieldset class="radius-top" data-icon="picture">
-                     	<input type="file" name="filesToUpload[]" id="filesToUpload" accept="image/*; capture=camera"/>
-                	</fieldset>
-                	<fieldset>
-                		<label class="anchor">Límite de fotos</label>
-                		<input id="is-limited" type="checkbox" class="inline right">
-             		</fieldset>
-             		<fieldset>
-		                <input id="cant-stickers" type="text" placeholder="Cantidad de stickers">
-		            <fieldset>
+		<div data-role="content" data-theme="c">
+			<div data-role="content">
+				<div id="albums-grid" class="ui-grid-b">
+				    <div class="ui-block-a"><div class="ui-bar ui-bar-e" style="height:60px">A</div></div>
+				    <div class="ui-block-b"><div class="ui-bar ui-bar-e" style="height:60px">B</div></div>
+				    <div class="ui-block-c"><div class="ui-bar ui-bar-e" style="height:60px">C</div></div>
 				</div>
-		</article>
+			</div>	
+		</div>	
+	</div>
 
-	</section>
+	<div data-role="page" data-theme="c" id="form-album" data-add-back-btn="true">
+		<div data-role="header" >
+			<h1>Photo Album</h1>
+		</div>
+
+		<div data-role="content">
+			<input type="text" name="text-basic" id="name" value="" placeholder="Nombre">
+			<textarea cols="40" rows="8" name="textarea" id="description" placeholder="Descripcion"></textarea>
+			<label for="file">Foto:</label>
+			<input type="file" name="file" id="file" value="">
+			<label for="slider2">Limite de stickers:</label>
+			<select name="slider2" id="slider2" data-role="slider">
+			    <option value="off">No</option>
+			    <option value="on">Si</option>
+			</select>
+			<p>Si no seleccionas límite podrás subir todo los stickers qué quieras.</p>
+			<label for="number-pattern">Número de stickers:</label>
+			<input type="number" name="number" pattern="[0-9]*" id="cant-stickers" value="0" disabled="true">
+		</div>	
+	</div>
 
 
-    <section id="main-photos">
-        <header data-title="mal parquedos">
-            <nav>
-                <a href="#" data-view-aside="features" data-icon="menu" class="button"></a>
-            </nav>
-        </header>
-        <article class="indented active" id="grid">
-            <div class="layout horizontal">
-                <div data-layout="primary">hola</div>
-                <div data-layout="primary">hola</div>
-            </div>
+	<script src="js/jquery-1.10.1.min.js"></script> 
+	<script src="js/jquery.mobile-1.3.2.min.js"></script> 
 
-        </article>
-    </section>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-		<script type="text/javascript" src="http://static.stackmob.com/js/stackmob-js-0.9.2-bundled-min.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
-		<script src="js/jquery-1.10.1.min.js"></script>
-		<script src="js/quo.js"></script>
-		<script src="js/quo.debug.js"></script>
-		<script src="js/lungo.js"></script>
-		<script src="js/stackmob.js"></script>
-	<script>
-	Lungo.init({
-    name: 'example',
-    resources: []
-	});
-</script>
 </body>
 
 </html>
