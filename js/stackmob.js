@@ -169,11 +169,25 @@ function createUser(){
    
   var c = new Customer({
     email: $('#form-registro #email').val(),
-    passwordField: $('#form-registro #p1').val()
+    passwordField: $('#form-registro #p1').val(),
+    username: $('#form-registro #username').val()
   });
   c.create(); //saves to "customer"
 
 }
+
+function loginUser(){
+  var user = new StackMob.User({ username: $('#formulario-login #nombredeusuario').val(), password: $('#formulario-login #clave').val() });
+  user.login(false, {
+    success: function(model, result, options) {
+      console.log("QAP");
+    },
+    error: function(model, result, options) {
+      console.error("error", model, result, options); //or print out the error
+    }
+  });
+}
+
 
 var cityReport = "";
 var countryReport = "";
@@ -370,17 +384,7 @@ var reader = new FileReader();
    reader.readAsDataURL(file);
 }
 
-function loginUser(){
-  var user = new StackMob.User({ email: $('#formulario-login #nombredeusuario').val(), passwordField: $('#formulario-login #clave').val() });
-  user.login(false, {
-    success: function(model, result, options) {
-      console.log("QAP");
-    },
-    error: function(model, result, options) {
-      console.error("error", model, result, options); //or print out the error
-    }
-  });
-}
+
 
 function getAlbums(){
       json = albums(function(data){
