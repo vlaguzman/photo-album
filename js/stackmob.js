@@ -24,8 +24,9 @@ var albums = function consultReport(callback){
       callback(result);
 	  },
 	  error: function(model, error, options) {
-	      console.debug(error.error); 
-	      document.getElementById("statusSave").innerHTML = error.error; }
+	      console.debug("Error", error.error); 
+	      //document.getElementById("statusSave").innerHTML = error.error; 
+      }
 	});
 }
 
@@ -49,10 +50,12 @@ function createRegistry(data){
   instance.create({
     success: function(model, result, options) { 
       // console.debug(model.toJSON()); 
-      document.getElementById("statusSave").innerHTML = "OK"; },
+      //document.getElementById("statusSave").innerHTML = "OK"; 
+    },
     error: function(model, error, options) {
-      console.debug(error.error); 
-      document.getElementById("statusSave").innerHTML = error.error; }
+      console.debug("Error", error.error); 
+      //document.getElementById("statusSave").innerHTML = error.error; 
+    }
   });
 }
 
@@ -126,6 +129,6 @@ function updteList(){
 }
 
 $( "#page-albums" ).on( "pageshow", function( event, ui ) {
-  //getAlbums();
+  getAlbums();
   return false;
 })
