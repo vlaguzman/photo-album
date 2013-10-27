@@ -144,7 +144,7 @@ function createUser(){
   }
 
 function loginUser(){
-  var user = new StackMob.User({ username: $('#formulario-login #email').val(), password: $('#formulario-login #password').val() });
+  var user = new StackMob.User({ email: $('#formulario-login #email').val(), password: $('#formulario-login #password').val() });
   user.login(false, {
     success: function(model, result, options) {
       console.log("QAP");
