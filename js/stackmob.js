@@ -53,6 +53,7 @@ function createRegistry(data){
     success: function(model, result, options) { 
       // console.debug(model.toJSON()); 
       //document.getElementById("statusSave").innerHTML = "OK"; 
+      $('#form-album .ui-btn-text').trigger('click');
     },
     error: function(model, error, options) {
       console.debug("Error", error.error); 
