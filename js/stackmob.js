@@ -16,17 +16,19 @@ var CollectReport = StackMob.Collection.extend({
   model: Report
 });
 
-function consultReport(){
+var albums = function consultReport(callback){
 	var results = new CollectReport();
 	results.fetch({
-	  success: function(results) { //StackMob.Collection is returned
-	    console.debug(results.toJSON());
+	  success: function(result) { //StackMob.Collection is returned
+	    console.debug(result.toJSON());
+      callback(result);
 	  },
 	  error: function(model, error, options) {
 	      console.debug(error.error); 
 	      document.getElementById("statusSave").innerHTML = error.error; }
 	});
 }
+
 
 //The above schemaName: 'userinfo' tells StackMob to save 'userInfo' data under a schema named 'userinfo' on the server side.
 //Create an Object - Save an instance of your 'userinfo' object to the server.
@@ -70,7 +72,7 @@ $(document).ready(
         }
     })
 
-    $("#btn-send-album").click(function(event){
+  $("#btn-send-album").click(function(event){
       event.preventDefault();
       console.log('entra');
       var limit = $('#limit').val()
@@ -89,8 +91,41 @@ $(document).ready(
         }
         console.log('data', data);
         createRegistry(data);
-    });
-    
-  }
-);
+    }); 
+   
+    getAlbums();
+});
 
+
+function getAlbums(){
+      json = albums(function(data){
+        console.log("getAlbums -----------", data);
+        console.debug(data);
+      $('.albums-list li').remove();
+      for (var i = 0; i < data.models.length; i++){
+        var li_html = '<li><a href="#">';
+        li_html += '<img src='+data.models[i].get('photo')+'>';
+        li_html += '<h2>'+data.models[i].get('name')+'</h2>';
+        li_html += '<p>'+data.models[i].get('description')+'</p>';
+        if (data.models[i].get('limit') == true) {
+          li_html += '<span class="ui-li-count">'+data.models[i].get('cantStickers')+'</span>';
+        }
+        else{
+          li_html += '<span class="ui-li-count">Ilimitadas</span>'; 
+        };
+        li_html += '</li>';
+        li_html += '</ul>';
+        $('.albums-list').append(li_html);
+      }
+      setTimeout("updteList()",100);
+    });
+}
+
+function updteList(){
+  $(".albums-list").listview('refresh');
+}
+
+$( "#page-albums" ).on( "pageshow", function( event, ui ) {
+  //getAlbums();
+  return false;
+})
