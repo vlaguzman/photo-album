@@ -17,6 +17,16 @@ var CollectReport = StackMob.Collection.extend({
   model: Report
 });
 
+var q = new StackMob.Collection.Query();
+	q.equals('priority', 'high').equals('createddate').notEquals('done', true); 
+ 
+var todos = new Todos();
+todos.query(q, {
+  success: function(collection) {
+    console.debug(collection.toJSON());
+  }
+});
+
 
 
 
@@ -36,16 +46,27 @@ var fr = function consultReport(callback){
 	
 }
 
+var q = new StackMob.Collection.Query();
+	q.equals('lat', 'high').equals('lng', true); 
 
+	var todos = new Todos();
+		 todos.query(q, {
+  		 success: function(collection) {
+    		console.debug(collection.toJSON());
+  		 }
+});
+
+
+
+/*
 var CollectReportPorId = StackMob.Collection.extend({
   model: Report
 });
 
 
-
 var frPorId = function CollectReportPorId(callback, lb, mb){
 
-alert("lb= " + lb + "mb = " + mb);
+//alert("lb= " + lb + "mb = " + mb);
 
 	var results = new CollectReport({ 'lat': lb, 'lng': mb });
 	results.fetch({
@@ -61,7 +82,7 @@ alert("lb= " + lb + "mb = " + mb);
 	});
 	
 }
-
+*/
 //The above schemaName: 'userinfo' tells StackMob to save 'userInfo' data under a schema named 'userinfo' on the server side.
 //Create an Object - Save an instance of your 'userinfo' object to the server.
 //Create new instance of uInfo

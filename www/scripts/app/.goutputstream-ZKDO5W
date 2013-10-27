@@ -34,7 +34,7 @@ page_.views.Map = function () {
 			var map;
 			//function initialize() {
 			  var mapOptions = {
-				 zoom: 16,
+				 zoom: 18,
 				 center: new google.maps.LatLng(4.689618535678233,-74.07072347561879),
 				 //center: new google.maps.LatLng(-74.08175,4.60971),
 				// draggableCursor:"crosshair",
@@ -67,10 +67,11 @@ page_.views.Map = function () {
  					  var lat = data.models[i].get('lat');
  					  var lng = data.models[i].get('lng');
 
- 					 
-					  //alert(photo);
+ 					  var photo = data.models[i].get('photo');
 
-					  
+					  //alert(foto);
+
+					  $("#imglogo").attr("src", photo);
  			
 					  var myLatLng = new google.maps.LatLng(lat, lng);
 		           var marker = new google.maps.Marker({
@@ -85,43 +86,6 @@ page_.views.Map = function () {
 					   google.maps.event.addListener(marker, 'mousedown', function(){
 			  	           // this.setIcon('http://gmaps-samples.googlecode.com/svn/trunk/markers/red/blank.png');
 			  	        //	$("#modal_iconmap").modal();
-
-			  	        console.log("marker mosedown", marker.position.lb, marker.position.mb);
-
-                    var q = new StackMob.Collection.Query();
-			  	        console.log(q);
-
-						  q.equals('lat', marker.position.lb);//.equals('lng', marker.position.mb); //you can 							
-							var todos = new CollectReport();
-							todos.query(q, {
-							  success: function(collection) {
-								 console.debug("StackMob.Collection.Query", collection.toJSON());
-
-								 var result = collection.toJSON();
-
-                         $.each(result, function(k, v){
-
-                              console.log("k", k);
-									   console.log("v", v);
-
-									   alert(v.photo);
-
- 					 				 $("#imglogo").attr("src", v.photo);
-
- 					  				  
- 					  					console.log(v.city);
-
-				     					$("#city").html(v.city);
-				     					$("#direccion").html(v.address);
-
-
-                         });
-
-								 
-							  }
-							});
-							
-			  	        
 			  	         $.fancybox({
                			 'content': $("#modal_iconmap").html()
             			});

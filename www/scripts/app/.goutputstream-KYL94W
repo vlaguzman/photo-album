@@ -67,7 +67,16 @@ page_.views.Map = function () {
  					  var lat = data.models[i].get('lat');
  					  var lng = data.models[i].get('lng');
 
- 					 
+ 					  var photo = data.models[i].get('photo');
+
+ 					  $("#imglogo").attr("src", photo);
+
+ 					  var city = data.models[i].get('city');
+
+ 					  console.log(city);
+
+				     $("#city").val(city);
+
 					  //alert(photo);
 
 					  
@@ -91,33 +100,11 @@ page_.views.Map = function () {
                     var q = new StackMob.Collection.Query();
 			  	        console.log(q);
 
-						  q.equals('lat', marker.position.lb);//.equals('lng', marker.position.mb); //you can 							
-							var todos = new CollectReport();
+						  q.equals('lat', marker.position.lb).equals('lng', marker.position.mb); //you can 							
+							var todos = new Todos();
 							todos.query(q, {
 							  success: function(collection) {
 								 console.debug("StackMob.Collection.Query", collection.toJSON());
-
-								 var result = collection.toJSON();
-
-                         $.each(result, function(k, v){
-
-                              console.log("k", k);
-									   console.log("v", v);
-
-									   alert(v.photo);
-
- 					 				 $("#imglogo").attr("src", v.photo);
-
- 					  				  
- 					  					console.log(v.city);
-
-				     					$("#city").html(v.city);
-				     					$("#direccion").html(v.address);
-
-
-                         });
-
-								 
 							  }
 							});
 							

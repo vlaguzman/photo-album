@@ -1,0 +1,144 @@
+var json;
+var page_ = {};
+page_.models = {};
+page_.controllers = {};
+page_.views = {};
+
+var marcas = [];
+  //['tunjuelito', 4.60971,-74.08175, 4],
+  //['usaquen', 4.70971,-75.08175, 5]
+//];
+
+
+
+// jQuery global controller
+$(document).ready(function () {
+  
+    new page_.views.Map().init();
+  
+
+});        //fin ready
+
+
+page_.views.Map = function () {
+	 this.init = function () {
+      	  
+		this.map_canvas();
+
+	 }//fin init
+
+	 this.map_canvas = function(){
+
+	  
+       
+			var map;
+			//function initialize() {
+			  var mapOptions = {
+				 zoom: 8,
+				 center: new google.maps.LatLng(4.60971,-74.08175),
+				 //center: new google.maps.LatLng(-74.08175,4.60971),
+				 draggableCursor:"crosshair",
+         	 overviewMapControl: true,
+          	 overviewMapControlOptions: {
+       			opened: true
+     			 }
+			  };
+				  map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
+
+		
+
+				json = fr(function(data){
+					console.debug("map.js");
+					console.debug(data);
+					console.debug('models',data.models);
+					for (var i = 0; i < data.models.length; i++){
+
+               var obj =  ['localidad', parseFloat(data.models[i].get('lat')), parseFloat(data.models[i].get('lng')), i];
+
+						marcas = { [obj] };
+						//alert(data.models[i].get('lat'));
+						//console.debug(data.models[i].get('lat'));
+						
+					}
+
+					//marcas.substr(0,marcas.length() -1);
+					console.debug("marcas", marcas);
+
+				});
+
+				
+            this.set_markers(map, marcas);
+				google.maps.event.addDomListener(window, 'load', this); 
+
+
+				//setTimeout("test()",5000);
+				
+				//console.log(json.serializeArray());
+
+	
+				  
+	    	//}//inicialize
+
+			//google.maps.event.addListener(map, 'mousemove', function(event) {
+    		//	document.getElementById("coords").innerHTML = event.latLng.lat()+ ', ' + event.latLng.lng()
+   		//});
+
+			//	  google.maps.event.addDomListener(window, 'load', initialize); 
+
+	 }//fin function map_canvas
+
+	 this.set_markers = function(map, locations){
+
+console.log(map);
+console.log(locations);
+ //alert("zzx");
+	 
+  // Add markers to the map
+
+  // Marker sizes are expressed as a Size of X,Y
+  // where the origin of the image (0,0) is located
+  // in the top left of the image.
+
+  // Origins, anchor positions and coordinates of the marker
+  // increase in the X direction to the right and in
+  // the Y direction down.
+		  var image = {
+			 url: 'img/icon_map/comida.png'//,
+			
+		  };
+  // Shapes define the clickable region of the icon.
+  // The type defines an HTML &lt;area&gt; element 'poly' which
+  // traces out a polygon as a series of X,Y points. The final
+  // coordinate closes the poly by connecting to the first
+  // coordinate.
+		  var shape = {
+				coord: [1, 1, 1, 20, 18, 20, 18 , 1],
+				type: 'poly'
+		  };
+		  for (var i = 0; i < locations.length; i++) {
+			 var beach = locations[i];
+
+			 console.log("bitch", beach);
+			 
+			 var myLatLng = new google.maps.LatLng(beach[1], beach[2]);
+			 var marker = new google.maps.Marker({
+				  position: myLatLng,
+				  map: map,
+				  icon: image,
+				  shape: shape,
+				  title: beach[0],
+				  zIndex: beach[3]
+			 });
+		  }
+
+	 }//fin markers
+
+	 
+
+};//fin page view
+
+
+
+function test(){
+	console.log(json);
+}
