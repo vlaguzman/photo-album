@@ -399,26 +399,25 @@ var reader = new FileReader();
 
 function getAlbums(){
       json = albums(function(data){
-        console.log("getAlbums -----------", data);
         console.debug(data);
       $('.albums-list li').remove();
       for (var i = 0; i < data.models.length; i++){
           var albumIdfn = data.models[i].get('album_id');
           var cantSticker = albumIdfn + '-' + data.models[i].get('cantStickers');
           console.log('cantSticker', cantSticker);
-        var li_html = '<li><a href="#album-sticker" data-id="123" onClick="saveAlbumId('+albumIdfn+')">';
-        li_html += '<img src='+data.models[i].get('photo')+'>';
-        li_html += '<h2>'+data.models[i].get('name')+'</h2>';
-        li_html += '<p>'+data.models[i].get('description')+'</p>';
-        if (data.models[i].get('limit') == true) {
-          li_html += '<span class="ui-li-count">'+data.models[i].get('cantStickers')+'</span>';
-        }
-        else{
-          li_html += '<span class="ui-li-count">Ilimitadas</span>'; 
-        };
-        li_html += '</li>';
-        li_html += '</ul>';
-        $('.albums-list').append(li_html);
+          var li_html = '<li><a href="#album-sticker" data-id="123" onClick="saveAlbumId('+albumIdfn+')">';
+          li_html += '<img src='+data.models[i].get('photo')+'>';
+          li_html += '<h2>'+data.models[i].get('name')+'</h2>';
+          li_html += '<p>'+data.models[i].get('description')+'</p>';
+          if (data.models[i].get('limit') == true) {
+            li_html += '<span class="ui-li-count">'+data.models[i].get('cantStickers')+'</span>';
+          }
+         else{
+            li_html += '<span class="ui-li-count">Ilimitadas</span>'; 
+          };
+          li_html += '</li>';
+          li_html += '</ul>';
+          $('.albums-list').append(li_html);
       }
       setTimeout("updteList()",100);
     });
