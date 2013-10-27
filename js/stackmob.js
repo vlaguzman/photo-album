@@ -1,6 +1,7 @@
 //Call init to initialize the StackMob library. This is required before you use StackMob's JS SDK further
 var albumId;
 var cantPintar;
+var initialLatitude;
 StackMob.init({
   // publicKey: "e92381ae-561c-420e-a109-a7d73f724e6f",
   publicKey: "6b5723e7-06f5-4994-b2cd-d9bdc6dfceb2",
@@ -98,7 +99,7 @@ function createSticker(){
   });
 }
 
-Lungo.Events.init({
+/*Lungo.Events.init({*/
  /*'tap section#splash article div a#enter': function(){
     // FALTA VALIDAR EL USUARIO CONTRA LA BD
     // getLocation();
@@ -188,14 +189,14 @@ function createUser(){
     //   // clearData();
     //   showPhotos();
     // }
-  },
+  }
 
-  'tap section#splash article div a#enter': function(){
-    // loginUser();
-    getLocation();
-  },
+/*'tap section#splash article div a#enter': function(){*/
+/*// loginUser();*/
+/*getLocation();*/
+/*}*/
 
-  'tap section#main article div a#createSticker': function(){
+/*'tap section#main article div a#createSticker': function(){*/
     // var license = false;
     // var address = false;
     // var photo = false;
@@ -204,7 +205,7 @@ function createUser(){
     // address = validateData(document.getElementById('IAddress').value, "Dirección", "pushpin");
     // license = validateData(document.getElementById('ILicensePlate').value, "Placa", "truck");
     
-    createSticker();
+      /*createSticker();*/
     
 
     // if(license && address && photo) {
@@ -214,8 +215,8 @@ function createUser(){
     //   // clearData();
     //   showPhotos();
     // }
-  },
-});
+    /*},*/
+  /*});*/
 
 
 var cityReport = "";
@@ -413,7 +414,7 @@ var reader = new FileReader();
    reader.readAsDataURL(file);
 }
 
-  }
+/*}*/
 
 function loginUser(){
   var user = new StackMob.User({ username: $('#formulario-login #email').val(), password: $('#formulario-login #password').val() });
@@ -489,9 +490,10 @@ function getStickers(){
       }
     })
 }
-
 $( "#album-sticker" ).on( "pageshow", function( event, ui ) {
-    getStickers();
+    /*getStickers();*/
+    getLocation();
+    createSticker();
 })
 $( "#page-albums" ).on( "pageshow", function( event, ui ) {
   getAlbums();

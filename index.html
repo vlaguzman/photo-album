@@ -143,6 +143,34 @@
 		</div>
 
 		<div data-role="content">
+            <div class="form empty">
+
+                <!-- <span class="icon list-alt"></span> -->
+                <fieldset class="radius-top" data-icon="truck">
+                    <!-- <input type="text" id="ILicensePlate" name="LicensePlate" placeholder="Ingrese la placa" requiered> -->
+                </fieldset>
+                <fieldset class="radius-top" data-icon="pushpin">
+                     <input type="text" id="IAddress" name="Address" placeholder="Dirección">
+                </fieldset>
+                <!-- <fieldset class="radius-top" data-icon="map-marker">
+                    <input type="text" id="ICity" name="City" placeholder="Ciudad">
+                </fieldset>
+                <fieldset class="radius-top" data-icon="globe">
+                    <input type="text" id="ICountry" name="Country" placeholder="País">
+                </fieldset> -->
+                <fieldset class="radius-top" data-icon="picture">
+                    <input type="file" name="filesToUpload[]" id="filesToUpload" accept="image/*; capture=camera"/>
+                </fieldset>
+                
+                <output id="filesInfo"></output>
+                <output id="statusSave"></output>
+
+				<a id="btn-send-sticker" onClick="createSticker();">Enviar</a>
+                <!--<a href="#" id="createSticker" class="button anchor" data-icon="eye-open" data-label="Crear Foto"></a>-->
+                <!--<a href="#" id="consultReport" class="button anchor" data-icon="eye-open" data-label="Consultar Datos"></a>-->
+                <!-- <a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fdrive2in.com%2F&text=@drive_2in Acabo de cooperar en la protección y preservación de la vida en las vías, ¿y tú? #Social2in" class="button theme anchor" data-label="Tweet me" data-icon="twitter"></a> -->
+            </div>
+        <div id="map" class="form empty" style="width: 80%; height: 40%;"></div>
 		</div>	
 	</div>
 
