@@ -406,7 +406,7 @@ function getAlbums(){
           var cantSticker = albumIdfn + '-' + data.models[i].get('cantStickers');
           console.log('cantSticker', cantSticker);
           var li_html = '<li><a href="#album-sticker" data-id="123" onClick="saveAlbumId('+albumIdfn+')">';
-          li_html += '<img src='+data.models[i].get('photo')+'>';
+          li_html += '<img class="icon-album" src='+data.models[i].get('photo')+'>';
           li_html += '<h2>'+data.models[i].get('name')+'</h2>';
           li_html += '<p>'+data.models[i].get('description')+'</p>';
           if (data.models[i].get('limit') == true) {
