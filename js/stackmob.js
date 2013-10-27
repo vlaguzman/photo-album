@@ -28,17 +28,14 @@ function consultReport(){
 	});
 }
 
-
 //The above schemaName: 'userinfo' tells StackMob to save 'userInfo' data under a schema named 'userinfo' on the server side.
 //Create an Object - Save an instance of your 'userinfo' object to the server.
 //Create new instance of uInfo
 function createRegistry(){
   // Create new instance of Todo
   var instance = new Report({
-    country: "país",
-    city: "ciudad",
-    address: "dirección",
-    photo: "Foto",
+    name: "nombre",
+    description: "descripcion",
     done: true
   });
    
@@ -101,3 +98,13 @@ Lungo.Events.init({
     // }
   },
 });
+
+
+
+$(document).ready(function(){
+    
+  $("#btn-create-alb").click(function(){
+    
+  });
+
+})
