@@ -1,7 +1,7 @@
 //Call init to initialize the StackMob library. This is required before you use StackMob's JS SDK further
 StackMob.init({
   // publicKey: "e92381ae-561c-420e-a109-a7d73f724e6f",
-  publicKey: "e92381ae-561c-420e-a109-a7d73f724e6f",
+  publicKey: "6b5723e7-06f5-4994-b2cd-d9bdc6dfceb2",
   // publicKey: "73938e24-9c5a-490c-accd-40f416c092fa",
   apiVersion: 0
 });
