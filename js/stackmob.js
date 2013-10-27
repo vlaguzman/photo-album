@@ -34,10 +34,6 @@ var albums = function consultReport(callback){
 }
 
 
-
-
-
-
 //The above schemaName: 'userinfo' tells StackMob to save 'userInfo' data under a schema named 'userinfo' on the server side.
 //Create an Object - Save an instance of your 'userinfo' object to the server.
 //Create new instance of uInfo
@@ -99,11 +95,6 @@ function createSticker(){
   });
 }
 
-/*Lungo.Events.init({*/
- /*'tap section#splash article div a#enter': function(){
-    // FALTA VALIDAR EL USUARIO CONTRA LA BD
-    // getLocation();
- },*/
 function validatePass(p1, p2) {
   if (p1.value != p2.value) {
     p2.setCustomValidity('Las dos contraseñas deben ser iguales.');
@@ -180,43 +171,6 @@ function createUser(){
       password: $('#form-registro #clave').val()
     });
   c.create();
-
-
-    // if(license && address && photo) {
-    //   createReport();
-    //   //VERIFICAR NOTIFICACIÓN PARA SEGURARSE DE LA CREACIÓN CORRECTA DEL REPORTE (LADO SERVIDOR)
-    //   Lungo.Notification.success("Gracias", "¡Reporte enviado!", "trophy", 3);
-    //   // clearData();
-    //   showPhotos();
-    // }
-  }
-
-/*'tap section#splash article div a#enter': function(){*/
-/*// loginUser();*/
-/*getLocation();*/
-/*}*/
-
-/*'tap section#main article div a#createSticker': function(){*/
-    // var license = false;
-    // var address = false;
-    // var photo = false;
-
-    // photo = validateData(document.getElementById('filesToUpload').value, "Foto", "picture");
-    // address = validateData(document.getElementById('IAddress').value, "Dirección", "pushpin");
-    // license = validateData(document.getElementById('ILicensePlate').value, "Placa", "truck");
-    
-      /*createSticker();*/
-    
-
-    // if(license && address && photo) {
-    //   createReport();
-    //   //VERIFICAR NOTIFICACIÓN PARA SEGURARSE DE LA CREACIÓN CORRECTA DEL REPORTE (LADO SERVIDOR)
-    //   Lungo.Notification.success("Gracias", "¡Reporte enviado!", "trophy", 3);
-    //   // clearData();
-    //   showPhotos();
-    // }
-    /*},*/
-  /*});*/
 
 
 var cityReport = "";
@@ -414,10 +368,8 @@ var reader = new FileReader();
    reader.readAsDataURL(file);
 }
 
-/*}*/
-
 function loginUser(){
-  var user = new StackMob.User({ username: $('#formulario-login #email').val(), password: $('#formulario-login #password').val() });
+  var user = new StackMob.User({ email: $('#formulario-login #email').val(), password: $('#formulario-login #password').val() });
   user.login(false, {
     success: function(model, result, options) {
       console.log("QAP");
