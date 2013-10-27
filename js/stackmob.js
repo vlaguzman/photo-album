@@ -162,13 +162,14 @@ function createUser(){
 
     var User = StackMob.User.extend({
       schemaName: 'user',
-      loginField: 'username',
-      password: 'password'
+      loginField: 'email',
+      passwordField: 'password'
     });
      
     var c = new User({
       email: $('#form-registro #nombredeusuario').val(),
-      password: $('#form-registro #clave').val()
+      password: $('#form-registro #clave').val(),
+      passwordField: $('#form-registro #clave').val()
     });
   c.create();
 }
@@ -369,13 +370,13 @@ var reader = new FileReader();
 }
 
 function loginUser(){
-  var user = new StackMob.User({ email: $('#formulario-login #email').val(), password: $('#formulario-login #password').val() });
+  var user = new StackMob.User({ email: $('#formulario-login #email').val(), passwordField: $('#formulario-login #password').val() });
   user.login(false, {
     success: function(model, result, options) {
       console.log("QAP");
     },
     error: function(model, result, options) {
-      console.error(result); //or print out the error
+      console.error("error", model, result, options); //or print out the error
     }
   });
 }
@@ -410,6 +411,7 @@ function getAlbums(){
 function updteList(){
   $(".albums-list").listview('refresh');
 }
+
 function saveAlbumId(id){
     console.log('entraaaaaaa')
     albumId = id;
@@ -422,6 +424,7 @@ var Sticker = StackMob.Model.extend({
 var CollectStickers = StackMob.Collection.extend({
   model: Sticker
 });
+
 function getStickers(){
     var stickers = new CollectStickers();
     console.log('pintar', cantPintar);
