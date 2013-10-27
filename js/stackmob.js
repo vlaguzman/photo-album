@@ -1,4 +1,6 @@
 //Call init to initialize the StackMob library. This is required before you use StackMob's JS SDK further
+var albumId;
+var cantPintar;
 StackMob.init({
   // publicKey: "e92381ae-561c-420e-a109-a7d73f724e6f",
   publicKey: "6b5723e7-06f5-4994-b2cd-d9bdc6dfceb2",
@@ -97,7 +99,7 @@ $(document).ready(
     }); 
    
     getAlbums();
-});
+}); 
 
 
 function getAlbums(){
@@ -106,7 +108,7 @@ function getAlbums(){
         console.debug(data);
       $('.albums-list li').remove();
       for (var i = 0; i < data.models.length; i++){
-        var li_html = '<li><a href="#">';
+        var li_html = '<li><a href="#album-sticker" onClick="saveAlbumId('+data.models[i].get('album_id')+', '+data.models[i].get('cantStickers')+')">';
         li_html += '<img src='+data.models[i].get('photo')+'>';
         li_html += '<h2>'+data.models[i].get('name')+'</h2>';
         li_html += '<p>'+data.models[i].get('description')+'</p>';
@@ -127,7 +129,41 @@ function getAlbums(){
 function updteList(){
   $(".albums-list").listview('refresh');
 }
+function saveAlbumId(id, cant){
+    albumId = id;
+    cantPintar = cant;
+}
 
+var Sticker = StackMob.Model.extend({
+  schemaName: 'sticker'  //schemaName must be lowercase
+});
+
+var CollectStickers = StackMob.Collection.extend({
+  model: Sticker
+});
+function getStickers(){
+    var stickers = new CollectStickers();
+    console.log('pintar', cantPintar);
+
+    stickers.fetch({
+	  success: function(result) { //StackMob.Collection is returned
+	    console.log(result);
+        var cantStickers = _.filter(result.models, function(stick){
+            /*console.log('stick', stick);*/
+            return stick.get('album_id') == '123456'
+        })
+        console.log('cant stickers', cantStickers);
+	  },
+	  error: function(model, error, options) {
+	      console.debug("Error", error.error); 
+	      //document.getElementById("statusSave").innerHTML = error.error; 
+      }
+    })
+}
+
+$( "#album-sticker" ).on( "pageshow", function( event, ui ) {
+    getStickers();
+})
 $( "#page-albums" ).on( "pageshow", function( event, ui ) {
   getAlbums();
   return false;
