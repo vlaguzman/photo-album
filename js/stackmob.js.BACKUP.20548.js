@@ -65,6 +65,7 @@ function createRegistry(data){
   });
 }
 
+<<<<<<< HEAD
 function createSticker(){
   //Persist objects to the datastore and retrieve them 
   //Associates Model with the Schema
@@ -103,6 +104,7 @@ Lungo.Events.init({
     // FALTA VALIDAR EL USUARIO CONTRA LA BD
     // getLocation();
  },*/
+=======
 function validatePass(p1, p2) {
   if (p1.value != p2.value) {
     p2.setCustomValidity('Las dos contraseñas deben ser iguales.');
@@ -111,6 +113,7 @@ function validatePass(p1, p2) {
   } else if (p1.value == p2.value){
     p2.setCustomValidity('');
   }
+>>>>>>> 41519ad2394370a277ccc86b210e061c14b89039
 
 }
 
@@ -180,7 +183,7 @@ function createUser(){
     });
   c.create();
 
-
+<<<<<<< HEAD
     // if(license && address && photo) {
     //   createReport();
     //   //VERIFICAR NOTIFICACIÓN PARA SEGURARSE DE LA CREACIÓN CORRECTA DEL REPORTE (LADO SERVIDOR)
@@ -412,7 +415,7 @@ var reader = new FileReader();
    }
    reader.readAsDataURL(file);
 }
-
+=======
   }
 
 function loginUser(){
@@ -497,4 +500,4 @@ $( "#page-albums" ).on( "pageshow", function( event, ui ) {
   getAlbums();
   return false;
 })
-
+>>>>>>> 41519ad2394370a277ccc86b210e061c14b89039

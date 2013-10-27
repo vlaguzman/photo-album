@@ -106,3 +106,8 @@ function initialize(latitude, longitude) {
 
   //Route();
 }
+
+'tap section#splash article div a#enter': function(){
+    // loginUser();
+    getLocation();
+}
