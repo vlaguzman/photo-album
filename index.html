@@ -23,10 +23,39 @@
 </head>
 <body>
 	<section id="main">
-		<header data-title="titulo">header</header>
-		<article id="main-article">article</article>
-		<footer>footer</footer>
+        <header data-title="titulo">
+            <nav>
+                <a href="#main-photos" data-view-section="main-photos" class="button">Login</a>
+                <a href="#" class="button on-right">Register</a>
+            </nav>
+        </header>
+        <article class="list scroll">
+            <ul>
+                <li class="thumb big">
+                    <img src="img/icon-144.png" alt="bla" />
+                    <div>
+                        <strong>album1</strong>
+                        <span class="text tiny opacity">desc del album1</span>
+                    </div>
+                </li>
+            </ul>
+        </article>
+
 	</section>
+    <section id="main-photos">
+        <header data-title="mal parquedos">
+            <nav>
+                <a href="#" data-view-aside="features" data-icon="menu" class="button"></a>
+            </nav>
+        </header>
+        <article class="indented active" id="grid">
+            <div class="layout horizontal">
+                <div data-layout="primary">hola</div>
+                <div data-layout="primary">hola</div>
+            </div>
+
+        </article>
+    </section>
 
 <script src="js/quo.js"></script>
 <script src="js/quo.debug.js"></script>
