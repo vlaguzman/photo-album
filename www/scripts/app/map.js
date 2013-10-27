@@ -104,7 +104,7 @@ page_.views.Map = function () {
                               console.log("k", k);
 									   console.log("v", v);
 
-									   alert(v.photo);
+									   // alert(v.photo);
 
  					 				 $("#imglogo").attr("src", v.photo);
 
