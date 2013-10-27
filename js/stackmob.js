@@ -171,7 +171,7 @@ function createUser(){
       password: $('#form-registro #clave').val()
     });
   c.create();
-
+}
 
 var cityReport = "";
 var countryReport = "";
